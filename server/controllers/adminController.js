@@ -1,6 +1,6 @@
 import Booking from '../models/Booking.js';
 import BlockedSlot from '../models/BlockedSlot.js';
-import { PRICE_PER_SLOT, formatDate, getDateByOffset } from '../config/constants.js';
+import { PRICE_PER_SLOT, formatDate, getDateByOffset, ADMIN_PASSCODE } from '../config/constants.js';
 
 // Login with passcode
 export const adminLogin = (req, res) => {
@@ -10,7 +10,7 @@ export const adminLogin = (req, res) => {
     return res.status(400).json({ error: 'Passcode required' });
   }
 
-  if (passcode !== process.env.ADMIN_PASSCODE) {
+  if (passcode !== ADMIN_PASSCODE) {
     return res.status(401).json({ error: 'Invalid passcode' });
   }
 
